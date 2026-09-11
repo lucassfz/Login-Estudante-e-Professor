@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal acadêmico demonstrativo com acesso para alunos e professores." />
+  <title>Portal Acadêmico | Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="brand-panel" aria-label="Portal acadêmico">
+      <div class="brand-wrap">
+        <a class="brand-logo" href="index.html" aria-label="Voltar ao login">
+          <img src="assets/senac-logo.png" alt="Senac" />
+        </a>
+
+        <div class="brand-copy">
+          <span class="eyebrow eyebrow-light">Portal Acadêmico</span>
+          <h1>Um acesso simples para sua jornada.</h1>
+          <p>Entre como aluno ou professor e continue de onde parou.</p>
+        </div>
+      </div>
+
+      <div class="brand-orbit orbit-one" aria-hidden="true"></div>
+      <div class="brand-orbit orbit-two" aria-hidden="true"></div>
+    </section>
+
+    <section class="form-panel">
+      <div class="login-card">
+        <div class="mobile-logo" aria-hidden="true">
+          <img src="assets/senac-logo.png" alt="" />
+        </div>
+
+        <header class="login-header">
+          <span class="eyebrow">Bem-vindo</span>
+          <h2>Acesse sua conta</h2>
+          <p>Escolha seu perfil e informe seus dados.</p>
+        </header>
+
+        <div class="role-switch" role="group" aria-label="Tipo de acesso">
+          <button class="role-button active" type="button" data-role="aluno" aria-pressed="true">
+            <span class="role-avatar" aria-hidden="true">A</span>
+            <span>Aluno</span>
+          </button>
+          <button class="role-button" type="button" data-role="professor" aria-pressed="false">
+            <span class="role-avatar" aria-hidden="true">P</span>
+            <span>Professor</span>
+          </button>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <input id="role" type="hidden" value="aluno" />
+
+          <div class="field-group">
+            <label for="user">Usuário</label>
+            <div class="input-shell">
+              <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0" />
+              </svg>
+              <input
+                id="user"
+                name="user"
+                type="text"
+                autocomplete="username"
+                placeholder="Digite seu usuário"
+                required
+              />
+            </div>
+            <small class="field-error" id="userError" aria-live="polite"></small>
+          </div>
+
+          <div class="field-group">
+            <div class="label-row">
+              <label for="passwd">Senha</label>
+              <button class="link-button" id="forgotPassword" type="button">Esqueci minha senha</button>
+            </div>
+
+            <div class="input-shell">
+              <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              <input
+                id="passwd"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Digite sua senha"
+                required
+              />
+              <button class="password-toggle" id="togglePassword" type="button" aria-label="Mostrar senha">Mostrar</button>
+            </div>
+            <small class="field-error" id="passwordError" aria-live="polite"></small>
+          </div>
+
+          <label class="remember-row">
+            <input id="rememberMe" type="checkbox" />
+            <span>Lembrar meu usuário</span>
+          </label>
+
+          <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
+
+          <button class="primary-button" id="verify" type="submit">
+            <span class="button-label">Entrar</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </form>
+
+        <p class="legal-note">Projeto acadêmico demonstrativo.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="recoveryModal" hidden>
+    <section class="recovery-modal" role="dialog" aria-modal="true" aria-labelledby="recoveryTitle">
+      <button class="modal-close" id="closeModal" type="button" aria-label="Fechar recuperação de senha">×</button>
+
+      <div id="recoveryFormView">
+        <div class="modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 17h.01M9.1 9a3 3 0 1 1 5.4 1.8c-1.25.84-2.5 1.45-2.5 3.2" />
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+        </div>
+
+        <span class="eyebrow">Recuperação</span>
+        <h2 id="recoveryTitle">Esqueceu sua senha?</h2>
+        <p class="modal-description">Escolha como deseja receber as instruções de acesso.</p>
+
+        <div class="recovery-methods" role="group" aria-label="Forma de recuperação">
+          <button class="recovery-method active" type="button" data-method="email" aria-pressed="true">E-mail</button>
+          <button class="recovery-method" type="button" data-method="sms" aria-pressed="false">SMS</button>
+        </div>
+
+        <form id="recoveryForm" novalidate>
+          <div class="field-group recovery-field">
+            <label id="recoveryLabel" for="recoveryContact">E-mail cadastrado</label>
+            <div class="input-shell">
+              <svg class="field-icon" id="recoveryFieldIcon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+              <input
+                id="recoveryContact"
+                name="recoveryContact"
+                type="email"
+                autocomplete="email"
+                placeholder="seuemail@exemplo.com"
+                required
+              />
+            </div>
+            <small class="field-error" id="recoveryError" aria-live="polite"></small>
+          </div>
+
+          <button class="primary-button" id="sendRecovery" type="submit">
+            <span class="button-label">Enviar instruções</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="recovery-success" id="recoverySuccess" hidden>
+        <div class="success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></svg>
+        </div>
+        <h2>Solicitação enviada</h2>
+        <p id="recoverySuccessMessage"></p>
+        <small>Fluxo demonstrativo: nenhuma mensagem real é enviada.</small>
+        <button class="primary-button" id="finishRecovery" type="button">
+          <span class="button-label">Voltar ao login</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
